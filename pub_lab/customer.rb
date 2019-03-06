@@ -21,4 +21,8 @@ def check_drunkenness
   return @drunkenness
 end
 
+def pay_drink_price(drink)
+  @wallet -= drink.price 
+end
+
 end # end class
