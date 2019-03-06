@@ -20,6 +20,15 @@ def take_drink_price(drink)
   @till += drink.price
 end
 
+def take_food_price(food)
+  @till += food.price
+end
+
+def pub_sell_food_to_customer(food, customer)
+  take_food_price(food)
+  customer.pay_food_price(food)
+  customer.decrease_drunkenness(food)
+end
 # def pay_drink_price(drink)
 #   @wallet -= drink.price
 # end

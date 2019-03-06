@@ -25,8 +25,15 @@ def pay_drink_price(drink)
   @wallet -= drink.price
 end
 
+def pay_food_price(food)
+  @wallet -= food.price
+end
+
 def increase_drunkenness(drink)
   @drunkenness += drink.alcohol_level
 end
 
+def decrease_drunkenness(food)
+  @drunkenness -= food.get_rejuvenation_level
+end
 end # end class

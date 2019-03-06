@@ -16,7 +16,7 @@ def setup
   @customer1 = Customer.new("Mr Blobby", 1000, 40)
   @customer2 = Customer.new("Wee Tam", 10, 14)
   @customer3 = Customer.new("Big Tam", 100, 44)
-
+  @food1=Food.new("crisps", 1, 2)
   @pub1 = Pub.new("The Winking Duck", 100, [@drink1, @drink2, @drink3, @drink4])
 end # end setup
 
@@ -80,6 +80,18 @@ end
 def test_pub_refuse_drunk_customer__not_drunk
   assert_equal(false, @pub1.check_customer_drunkenness(@customer1))
 
+end
+
+def test_pub_gets_food_price
+  @pub1.take_food_price(@food1)
+  assert_equal(101, @pub1.check_till)
+end
+
+def test_pub_sell_food_to_customer
+  @pub1.pub_sell_food_to_customer(@food1, @customer1)
+  assert_equal(101, @pub1.check_till)
+  assert_equal(999, @customer1.check_wallet)
+  assert_equal(-2, @customer1.check_drunkenness)
 end
 
 end  # end class
