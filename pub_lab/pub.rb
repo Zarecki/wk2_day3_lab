@@ -8,4 +8,12 @@ def initialize(name, till, drinks)
   @drinks = drinks
 end
 
+def check_till
+  return @till
+end
+
+def list_drinks
+  return @drinks
+end
+
 end # end class
