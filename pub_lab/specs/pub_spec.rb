@@ -12,6 +12,8 @@ def setup
   @drink3 = Drink.new("Tennants", 5, 2)
   @drink4 = Drink.new("Pimms", 8, 1)
   @customer1 = Customer.new("Mr Blobby", 1000, 40)
+  @customer2 = Customer.new("Wee Tam", 10, 14)
+
   @pub1 = Pub.new("The Winking Duck", 100, [@drink1, @drink2, @drink3, @drink4])
 end # end setup
 
@@ -39,6 +41,22 @@ def test_pub_sell_drink_to_customer
   @pub1.pub_sell_drink_to_customer(@drink1, @customer1)
   assert_equal(107, @pub1.check_till)
   assert_equal(993, @customer1.check_wallet)
+end
+
+def test_pub_sell_drink_to_customer__refuse_underage
+  # @pub1.take_drink_price(@drink1)
+  # @customer1.pay_drink_price(@drink1)
+  @pub1.pub_sell_drink_to_customer(@drink1, @customer2)
+  assert_equal(100, @pub1.check_till)
+  assert_equal(10, @customer2.check_wallet)
+end
+
+def test_pub_check_customer_age__old_enough
+  assert_equal(true, @pub1.check_customer_age(@customer1))
+end
+
+def test_pub_check_customer_age__underage
+  assert_equal(false, @pub1.check_customer_age(@customer2))
 end
 
 end  # end class
