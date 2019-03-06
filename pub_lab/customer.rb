@@ -22,7 +22,11 @@ def check_drunkenness
 end
 
 def pay_drink_price(drink)
-  @wallet -= drink.price 
+  @wallet -= drink.price
+end
+
+def increase_drunkenness(drink)
+  @drunkenness += drink.alcohol_level
 end
 
 end # end class

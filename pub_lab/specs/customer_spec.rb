@@ -31,4 +31,10 @@ def test_customer_pays_drink_price
   @customer1.pay_drink_price(@drink1)
   assert_equal(993, @customer1.check_wallet)
 end
+
+def test_customer_increase_drunkenness
+  @customer1.increase_drunkenness(@drink1)
+  assert_equal(3, @customer1.check_drunkenness)
+end
+
 end  # end class
