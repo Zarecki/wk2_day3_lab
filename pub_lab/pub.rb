@@ -6,6 +6,18 @@ def initialize(name, till, drinks)
   @name = name
   @till = till
   @drinks = drinks
+  @stock = {}
+end
+
+def list_stock
+end
+
+def get_total_stock_value
+  stock_value = 0
+  for drink in @drinks
+    stock_value += ( drink.price * drink.stock_count )
+  end
+  return stock_value
 end
 
 def check_till

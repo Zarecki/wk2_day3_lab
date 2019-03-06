@@ -8,17 +8,25 @@ require_relative('../food')
 class TestPub < Minitest::Test
 
 def setup
-  @drink1 = Drink.new("Bucky", 7, 3)
-  @drink2 = Drink.new("White Lightning", 3, 2)
-  @drink3 = Drink.new("Tennants", 5, 2)
-  @drink4 = Drink.new("Pimms", 8, 1)
-  @drink5 = Drink.new("zombie", 10, 11)
+  @drink1 = Drink.new("Bucky", 7, 3, 5)
+  @drink2 = Drink.new("White Lightning", 3, 2, 5)
+  @drink3 = Drink.new("Tennants", 5, 2, 5)
+  @drink4 = Drink.new("Pimms", 8, 1, 5)
+  @drink5 = Drink.new("zombie", 10, 11, 5)
   @customer1 = Customer.new("Mr Blobby", 1000, 40)
   @customer2 = Customer.new("Wee Tam", 10, 14)
   @customer3 = Customer.new("Big Tam", 100, 44)
   @food1=Food.new("crisps", 1, 2)
-  @pub1 = Pub.new("The Winking Duck", 100, [@drink1, @drink2, @drink3, @drink4])
+  @pub1 = Pub.new("The Winking Duck", 100, [@drink1, @drink2, @drink3, @drink4, @drink5])
 end # end setup
+
+def test_get_stock_count
+
+end
+
+def test_stock_value
+  assert_equal(165, @pub1.get_total_stock_value)
+end
 
 def test_pub_name
   assert_equal("The Winking Duck", @pub1.name)
@@ -30,7 +38,7 @@ end
 
 def test_pub_drinks
   # p @pub1.list_drinks
-  assert_equal([@drink1, @drink2, @drink3, @drink4], @pub1.list_drinks)
+  assert_equal([@drink1, @drink2, @drink3, @drink4, @drink5], @pub1.list_drinks)
 end
 
 def test_pub_gets_drink_price
