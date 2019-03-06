@@ -9,4 +9,16 @@ def initialize(name, wallet, age)
   @drunkenness = 0
 end
 
+def check_age
+  return @age
+end
+
+def check_wallet
+  return @wallet
+end
+
+def check_drunkenness
+  return @drunkenness
+end
+
 end # end class
